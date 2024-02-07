@@ -1,0 +1,11 @@
+:root {
+  --mainFont: "Inter", sans-serif;
+  --Roboto: "Roboto", sans-serif;
+  --primaryColor: #9f5afd;
+  --backgroundColor: #f4f3f3;
+}
+
+* {
+  margin: 0;
+  font-family: var(--mainFont);
+}
