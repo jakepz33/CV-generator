@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Tab, Forms } from "./tabs";
 
 export default function EditSide() {
   return (
@@ -43,15 +44,11 @@ function FormFields() {
           <p>Load Example</p>
         </Button>
       </div>
-      <div className="personal-info">
-        <h2>Personal Information</h2>
-        <Item label="Full Name" />
-        <Item label="Email" />
-        <Item label="Phone Number" />
-        <Item label="Address" />
-      </div>
-      <DropDownBar description="Education" icon="school" />
-      <DropDownBar description="Experience" icon="work" />
+      <Forms formType="personal" />
+      <Tab description="Education" icon="school" />
+      {/* <Forms formType="education" /> */}
+      <Tab description="Experience" icon="work" />
+      {/* <Forms formType="workExperience" /> */}
     </div>
   );
 }
@@ -69,20 +66,20 @@ function Item({ label }) {
   );
 }
 
-function DropDownBar({ description, icon }) {
-  const [selectedTab, setSelectedTab] = useState(0);
+// function DropDownBar({ description, icon }) {
+//   const [selectedTab, setSelectedTab] = useState(0);
 
-  function handleClick(event) {
-    const arrow = event.currentTarget.querySelector(".expand");
-    arrow.classList.toggle("rotate");
-  }
-  return (
-    <>
-      <div className="tab" onClick={handleClick}>
-        <span className="material-icons">{icon}</span>
-        <p>{description}</p>
-        <span className="material-symbols-outlined expand">expand_more</span>
-      </div>
-    </>
-  );
-}
+//   function handleClick(event) {
+//     const arrow = event.currentTarget.querySelector(".expand");
+//     arrow.classList.toggle("rotate");
+//   }
+//   return (
+//     <>
+//       <div className="tab" onClick={handleClick}>
+//         <span className="material-icons">{icon}</span>
+//         <p>{description}</p>
+//         <span className="material-symbols-outlined expand">expand_more</span>
+//       </div>
+//     </>
+//   );
+// }

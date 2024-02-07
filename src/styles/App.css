@@ -55,7 +55,7 @@ h2 {
   background-color: rgb(245, 233, 233);
 }
 .form-fields {
-  background-color: lightgreen;
+  background-color: rgb(222, 235, 222);
   flex-grow: 999;
   min-width: 150px;
   display: flex;

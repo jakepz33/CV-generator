@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles/App.css";
-import EditSide from "./editSide";
-import CVside from "./CVside";
+import EditSide from "./components/editSide";
+import CVside from "./components/CVside";
 
 export default function App() {
   return (
