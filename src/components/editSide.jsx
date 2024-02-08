@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tab, Forms } from "./tabs";
+import Button from "./button";
 
 export default function EditSide() {
   return (
@@ -24,14 +25,14 @@ function SideBar() {
   );
 }
 
-function Button({ icon, children, className }) {
-  return (
-    <button className={className}>
-      {icon ? <span className="material-symbols-outlined">{icon}</span> : ""}
-      {children}
-    </button>
-  );
-}
+// function Button({ icon, children, className }) {
+//   return (
+//     <button className={className}>
+//       {icon ? <span className="material-symbols-outlined">{icon}</span> : ""}
+//       {children}
+//     </button>
+//   );
+// }
 
 function FormFields() {
   const [activeTab, setActiveTab] = useState("");
@@ -46,7 +47,7 @@ function FormFields() {
           <p>Load Example</p>
         </Button>
       </div>
-      <Forms formType="personal" />
+      <Forms formType="personal" formPersonal="form-personal" />
       <Tab
         description="Education"
         icon="school"

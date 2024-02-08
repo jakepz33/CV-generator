@@ -3,7 +3,11 @@
   flex-direction: column;
   padding: 20px;
   gap: 15px;
-  background-color: lightsalmon;
+  border-radius: 0 0 8px 8px;
+  background-color: #fff;
+}
+.form-personal {
+  border-radius: 8px 8px;
 }
 .startEnd {
   display: flex;
@@ -48,19 +52,26 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
-  background-color: lightgray;
-  margin-bottom: 2px;
+  background-color: #fff;
+  /* margin-bottom: 2px; */
+  border-top: 2px solid var(--backgroundColor);
+  border-bottom: 2px solid var(--backgroundColor);
 }
 .add-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 70px;
-  background-color: lightgray;
+  background-color: #fff;
 }
 .add-button {
-  background-color: lightgray;
-  border: 2px solid white;
+  background-color: #fff;
+  border: 3px solid var(--backgroundColor);
   border-radius: 25px;
   padding: 12px 15px;
+  font-weight: bold;
+  transition: border 0.3s ease-out;
+}
+.add-button:hover {
+  border-color: lightgray;
 }

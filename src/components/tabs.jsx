@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./button";
 
 function Tab({ description, icon, formType, activeTab, onActiveTab }) {
   // active tab is nothing
@@ -19,6 +20,7 @@ function Tab({ description, icon, formType, activeTab, onActiveTab }) {
     if (activeTab === formType) {
       onActiveTab("");
       setShowAdd(false);
+      setShowForm(false);
       console.log("form rtyp", formType);
     } else {
       onActiveTab(formType);
@@ -30,8 +32,10 @@ function Tab({ description, icon, formType, activeTab, onActiveTab }) {
 
   function handleAdd() {
     setShowForm(true);
+    setShowAdd(false);
     console.log("Add Button + description", showForm);
   }
+
   //{activeTab === formType ? (
   // <AddItem description={description} handleAdd={handleAdd} />
   // )
@@ -72,9 +76,9 @@ function AddItem({ description, handleAdd }) {
   );
 }
 
-function Forms({ formType }) {
+function Forms({ formType, formPersonal }) {
   return (
-    <form className="form">
+    <form className={`form ${formPersonal ? "form-personal" : ""}`}>
       {formType === "education" ? (
         <>
           <FormItem label="School" />
@@ -84,6 +88,7 @@ function Forms({ formType }) {
             <FormItem label="End date" startEnd={true} />
           </div>
           <FormItem label="Location" />
+          <Button className="save-cancel" />
         </>
       ) : formType === "workExperience" ? (
         <>
