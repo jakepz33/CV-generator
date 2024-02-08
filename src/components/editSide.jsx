@@ -34,6 +34,8 @@ function Button({ icon, children, className }) {
 }
 
 function FormFields() {
+  const [activeTab, setActiveTab] = useState("");
+
   return (
     <div className="form-fields">
       <div className="form-edits">
@@ -45,41 +47,20 @@ function FormFields() {
         </Button>
       </div>
       <Forms formType="personal" />
-      <Tab description="Education" icon="school" />
-      {/* <Forms formType="education" /> */}
-      <Tab description="Experience" icon="work" />
-      {/* <Forms formType="workExperience" /> */}
+      <Tab
+        description="Education"
+        icon="school"
+        formType="education"
+        activeTab={activeTab}
+        onActiveTab={setActiveTab}
+      />
+      <Tab
+        description="Experience"
+        icon="work"
+        formType="workExperience"
+        activeTab={activeTab}
+        onActiveTab={setActiveTab}
+      />
     </div>
   );
 }
-
-function Item({ label }) {
-  return (
-    <div className="item">
-      <label className="entry-label">{label}</label>
-      <input
-        className="text-inputs"
-        type="text"
-        placeholder={label.toLowerCase()}
-      ></input>
-    </div>
-  );
-}
-
-// function DropDownBar({ description, icon }) {
-//   const [selectedTab, setSelectedTab] = useState(0);
-
-//   function handleClick(event) {
-//     const arrow = event.currentTarget.querySelector(".expand");
-//     arrow.classList.toggle("rotate");
-//   }
-//   return (
-//     <>
-//       <div className="tab" onClick={handleClick}>
-//         <span className="material-icons">{icon}</span>
-//         <p>{description}</p>
-//         <span className="material-symbols-outlined expand">expand_more</span>
-//       </div>
-//     </>
-//   );
-// }

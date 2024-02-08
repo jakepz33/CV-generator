@@ -1,21 +1,74 @@
 import { useState } from "react";
 
-function Tab({ description, icon }) {
-  const [selectedTab, setSelectedTab] = useState(0);
+function Tab({ description, icon, formType, activeTab, onActiveTab }) {
+  // active tab is nothing
+  const [showForm, setShowForm] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
 
   function handleClick(event) {
     const arrow = event.currentTarget.querySelector(".expand");
-    arrow.classList.toggle("rotate");
+    // arrow.classList.toggle("rotate");
+    //console.log("making the tab.", activeTab);
+    const allArrows = document.querySelectorAll(".expand");
+
+    allArrows.forEach((arrow) => {
+      arrow.classList.remove("rotate");
+    });
+    // make active tab state == ""
+    // setShowAdd to false
+    if (activeTab === formType) {
+      onActiveTab("");
+      setShowAdd(false);
+      console.log("form rtyp", formType);
+    } else {
+      onActiveTab(formType);
+      setShowAdd(true);
+      arrow.classList.add("rotate");
+    }
+    console.log("making the tab.", activeTab);
   }
+
+  function handleAdd() {
+    setShowForm(true);
+    console.log("Add Button + description", showForm);
+  }
+  //{activeTab === formType ? (
+  // <AddItem description={description} handleAdd={handleAdd} />
+  // )
   return (
-    <>
+    <div>
       <div className="tab" onClick={handleClick}>
         <span className="material-icons">{icon}</span>
         <p>{description}</p>
         <span className="material-symbols-outlined expand">expand_more</span>
         {/* <Forms formType="education" /> */}
       </div>
-    </>
+      {showAdd && activeTab === formType ? (
+        <AddItem description={description} handleAdd={handleAdd} />
+      ) : (
+        ""
+      )}
+      {/* {activeTab === formType ? <Forms formType={formType} /> : ""} */}
+      {showForm && <Forms formType={formType} />}
+    </div>
+  );
+}
+
+function AddItem({ description, handleAdd }) {
+  // function handleAdd() {
+  //   console.log("Add Button + description", description);
+  // }
+  return (
+    <div className="add-item">
+      <div className="list-item">
+        <p>X University</p>
+      </div>
+      <div className="add-button-container">
+        <button className="add-button" onClick={handleAdd}>
+          + {description}
+        </button>
+      </div>
+    </div>
   );
 }
 

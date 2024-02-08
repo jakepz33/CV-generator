@@ -41,3 +41,26 @@
   height: 25px;
   outline: none;
 }
+
+/* ADD ITEM TO TAB */
+.list-item {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  background-color: lightgray;
+  margin-bottom: 2px;
+}
+.add-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: lightgray;
+}
+.add-button {
+  background-color: lightgray;
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 12px 15px;
+}
