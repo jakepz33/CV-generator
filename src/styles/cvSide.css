@@ -1,0 +1,42 @@
+.personal-info-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightpink;
+  gap: 10px;
+  height: fit-content;
+  padding: 3rem 0 3rem 0;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* INFO COMPONENT */
+.info-container {
+  padding: 0 56px 0 56px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+.header-container {
+  width: 100%;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}

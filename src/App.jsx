@@ -40,7 +40,16 @@ export default function App() {
         curAddress={curAddress}
         onSetAddress={setAddress}
       />
-      <CVside />
+      <CVside
+        curName={curName}
+        onCurName={setCurName}
+        curEmail={curEmail}
+        onSetEmail={setEmail}
+        curPhone={curPhone}
+        onSetPhone={setPhone}
+        curAddress={curAddress}
+        onSetAddress={setAddress}
+      />
     </div>
   );
 }
