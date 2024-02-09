@@ -54,8 +54,8 @@
   padding-left: 30px;
   background-color: #fff;
   /* margin-bottom: 2px; */
-  border-top: 2px solid var(--backgroundColor);
-  border-bottom: 2px solid var(--backgroundColor);
+  border-top: 3px solid var(--backgroundColor);
+  border-bottom: 3px solid var(--backgroundColor);
 }
 .add-button-container {
   display: flex;
@@ -63,6 +63,7 @@
   align-items: center;
   height: 70px;
   background-color: #fff;
+  border-radius: 0 0 8px 8px;
 }
 .add-button {
   background-color: #fff;
@@ -70,7 +71,7 @@
   border-radius: 25px;
   padding: 12px 15px;
   font-weight: bold;
-  transition: border 0.3s ease-out;
+  transition: border 0.25s ease-out;
 }
 .add-button:hover {
   border-color: lightgray;

@@ -24,9 +24,22 @@ const schools = [
 ];
 
 export default function App() {
+  const [curName, setCurName] = useState("Jacob Perez");
+  const [curEmail, setEmail] = useState("jumbotron@nextgen.io");
+  const [curPhone, setPhone] = useState("298-536-0990");
+  const [curAddress, setAddress] = useState("");
   return (
     <div className="app">
-      <EditSide />
+      <EditSide
+        curName={curName}
+        onCurName={setCurName}
+        curEmail={curEmail}
+        onSetEmail={setEmail}
+        curPhone={curPhone}
+        onSetPhone={setPhone}
+        curAddress={curAddress}
+        onSetAddress={setAddress}
+      />
       <CVside />
     </div>
   );

@@ -76,7 +76,18 @@ function AddItem({ description, handleAdd }) {
   );
 }
 
-function Forms({ formType, formPersonal }) {
+function Forms({
+  formType,
+  formPersonal,
+  curName,
+  onCurName,
+  curEmail,
+  onSetEmail,
+  curPhone,
+  onSetPhone,
+  curAddress,
+  onSetAddress,
+}) {
   return (
     <form className={`form ${formPersonal ? "form-personal" : ""}`}>
       {formType === "education" ? (
@@ -104,21 +115,34 @@ function Forms({ formType, formPersonal }) {
       ) : (
         <>
           <h2>Personal Information</h2>
-          <FormItem label="Full Name" />
-          <FormItem label="Email" />
-          <FormItem label="Phone Number" />
-          <FormItem label="Address" />
+          <FormItem label="Full Name" curItem={curName} onCurItem={onCurName} />
+          <FormItem label="Email" curItem={curEmail} onCurItem={onSetEmail} />
+          <FormItem
+            label="Phone Number"
+            curItem={curPhone}
+            onCurItem={onSetPhone}
+          />
+          <FormItem
+            label="Address"
+            curItem={curAddress}
+            onCurItem={onSetAddress}
+          />
         </>
       )}
     </form>
   );
 }
 
-function FormItem({ label, startEnd, placeHolder }) {
+function FormItem({ label, startEnd, placeHolder, curItem, onCurItem }) {
   return (
     <div className={`form-item ${startEnd ? "start-date" : ""}`}>
       <label>{label}</label>
-      <input type="text" className="form-input"></input>
+      <input
+        type="text"
+        className="form-input"
+        value={curItem}
+        onChange={(e) => onCurItem(e.target.value)}
+      ></input>
     </div>
   );
 }

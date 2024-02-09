@@ -2,11 +2,29 @@ import { useState } from "react";
 import { Tab, Forms } from "./tabs";
 import Button from "./button";
 
-export default function EditSide() {
+export default function EditSide({
+  curName,
+  onCurName,
+  curEmail,
+  onSetEmail,
+  curPhone,
+  onSetPhone,
+  curAddress,
+  onSetAddress,
+}) {
   return (
     <div className="appChild edit-side">
       <SideBar />
-      <FormFields />
+      <FormFields
+        curName={curName}
+        onCurName={onCurName}
+        curEmail={curEmail}
+        onSetEmail={onSetEmail}
+        curPhone={curPhone}
+        onSetPhone={onSetPhone}
+        curAddress={curAddress}
+        onSetAddress={onSetAddress}
+      />
     </div>
   );
 }
@@ -34,7 +52,16 @@ function SideBar() {
 //   );
 // }
 
-function FormFields() {
+function FormFields({
+  curName,
+  onCurName,
+  curEmail,
+  onSetEmail,
+  curPhone,
+  onSetPhone,
+  curAddress,
+  onSetAddress,
+}) {
   const [activeTab, setActiveTab] = useState("");
 
   return (
@@ -47,7 +74,18 @@ function FormFields() {
           <p>Load Example</p>
         </Button>
       </div>
-      <Forms formType="personal" formPersonal="form-personal" />
+      <Forms
+        formType="personal"
+        formPersonal="form-personal"
+        curName={curName}
+        onCurName={onCurName}
+        curEmail={curEmail}
+        onSetEmail={onSetEmail}
+        curPhone={curPhone}
+        onSetPhone={onSetPhone}
+        curAddress={curAddress}
+        onSetAddress={onSetAddress}
+      />
       <Tab
         description="Education"
         icon="school"
