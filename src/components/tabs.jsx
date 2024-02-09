@@ -1,7 +1,17 @@
 import { useState } from "react";
 import Button from "./button";
+import { schools } from "../App";
+import { workExperienceList } from "../App";
 
-function Tab({ description, icon, formType, activeTab, onActiveTab }) {
+function Tab({
+  description,
+  icon,
+  formType,
+  activeTab,
+  onActiveTab,
+  itemList,
+  onItemList,
+}) {
   // active tab is nothing
   const [showForm, setShowForm] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
@@ -47,31 +57,56 @@ function Tab({ description, icon, formType, activeTab, onActiveTab }) {
         <span className="material-symbols-outlined expand">expand_more</span>
         {/* <Forms formType="education" /> */}
       </div>
+
       {showAdd && activeTab === formType ? (
-        <AddItem description={description} handleAdd={handleAdd} />
+        <AddItem
+          description={description}
+          handleAdd={handleAdd}
+          itemList={itemList}
+          onItemList={onItemList}
+        />
       ) : (
         ""
       )}
+
       {/* {activeTab === formType ? <Forms formType={formType} /> : ""} */}
-      {showForm && <Forms formType={formType} />}
+      {showForm && (
+        <Forms
+          formType={formType}
+          itemList={itemList}
+          onItemList={onItemList}
+        />
+      )}
     </div>
   );
 }
 
-function AddItem({ description, handleAdd }) {
+function AddItem({ description, handleAdd, itemList }) {
   // function handleAdd() {
   //   console.log("Add Button + description", description);
   // }
   return (
     <div className="add-item">
-      <div className="list-item">
-        <p>X University</p>
-      </div>
+      {itemList.map((item) => (
+        <ListItem
+          title={item.name || item.School}
+          key={item.name || item.School}
+        />
+      ))}
+      {/* <ListItem />
+      <ListItem /> */}
       <div className="add-button-container">
         <button className="add-button" onClick={handleAdd}>
           + {description}
         </button>
       </div>
+    </div>
+  );
+}
+function ListItem({ title }) {
+  return (
+    <div className="list-item">
+      <p>{title}</p>
     </div>
   );
 }
@@ -87,18 +122,75 @@ function Forms({
   onSetPhone,
   curAddress,
   onSetAddress,
+  // for schoolForm
+  itemList,
+  onItemList,
 }) {
+  const [formData, setFormData] = useState({});
+
+  //testing education state
+  const [curSchool, setCurSchool] = useState("Stanislaus State");
+  const [curDegree, setCurDegree] = useState("Computer Science");
+  const [curStartDate, setCurStartDate] = useState("8/22/2017");
+  const [curEndDate, setCurEndDate] = useState("5/23/2021");
+  const [curSchoolLocation, setCurSchoolLocation] = useState("Turlock, CA");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(itemList);
+    const newItem = { ...formData };
+    onItemList((prevList) => [...prevList, newItem]);
+    console.log(formData);
+  }
+
+  function handleInputChange(name, value) {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+
   return (
-    <form className={`form ${formPersonal ? "form-personal" : ""}`}>
+    <form
+      className={`form ${formPersonal ? "form-personal" : ""}`}
+      onSubmit={handleSubmit}
+    >
       {formType === "education" ? (
         <>
-          <FormItem label="School" />
-          <FormItem label="Degree" />
+          <FormItem
+            label="School"
+            curItem={curSchool}
+            onCurItem={setCurSchool}
+            onChange={handleInputChange}
+          />
+          <FormItem
+            label="Degree"
+            curItem={curDegree}
+            onCurItem={setCurDegree}
+            onChange={handleInputChange}
+          />
           <div className="startEnd">
-            <FormItem label="Start date" startEnd={true} />
-            <FormItem label="End date" startEnd={true} />
+            <FormItem
+              label="Start date"
+              startEnd={true}
+              curItem={curStartDate}
+              onCurItem={setCurStartDate}
+              onChange={handleInputChange}
+            />
+            <FormItem
+              label="End date"
+              startEnd={true}
+              curItem={curEndDate}
+              onCurItem={setCurEndDate}
+              onChange={handleInputChange}
+            />
           </div>
-          <FormItem label="Location" />
+          <FormItem
+            label="Location"
+            curItem={curSchoolLocation}
+            onCurItem={setCurSchoolLocation}
+            onChange={handleInputChange}
+          />
           <Button className="save-cancel" />
         </>
       ) : formType === "workExperience" ? (
@@ -133,7 +225,14 @@ function Forms({
   );
 }
 
-function FormItem({ label, startEnd, placeHolder, curItem, onCurItem }) {
+function FormItem({
+  label,
+  startEnd,
+  placeHolder,
+  curItem,
+  onCurItem,
+  onChange,
+}) {
   return (
     <div className={`form-item ${startEnd ? "start-date" : ""}`}>
       <label>{label}</label>
@@ -141,7 +240,10 @@ function FormItem({ label, startEnd, placeHolder, curItem, onCurItem }) {
         type="text"
         className="form-input"
         value={curItem}
-        onChange={(e) => onCurItem(e.target.value)}
+        onChange={(e) => {
+          onChange(label, e.target.value);
+          onCurItem(e.target.value);
+        }}
       ></input>
     </div>
   );

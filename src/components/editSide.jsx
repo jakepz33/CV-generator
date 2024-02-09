@@ -11,6 +11,10 @@ export default function EditSide({
   onSetPhone,
   curAddress,
   onSetAddress,
+  schoolList,
+  onSchoolList,
+  workList,
+  onWorkList,
 }) {
   return (
     <div className="appChild edit-side">
@@ -24,6 +28,10 @@ export default function EditSide({
         onSetPhone={onSetPhone}
         curAddress={curAddress}
         onSetAddress={onSetAddress}
+        schoolList={schoolList}
+        onSchoolList={onSchoolList}
+        workList={workList}
+        onWorkList={onWorkList}
       />
     </div>
   );
@@ -61,6 +69,10 @@ function FormFields({
   onSetPhone,
   curAddress,
   onSetAddress,
+  schoolList,
+  onSchoolList,
+  workList,
+  onWorkList,
 }) {
   const [activeTab, setActiveTab] = useState("");
 
@@ -92,6 +104,8 @@ function FormFields({
         formType="education"
         activeTab={activeTab}
         onActiveTab={setActiveTab}
+        itemList={schoolList}
+        onItemList={onSchoolList}
       />
       <Tab
         description="Experience"
@@ -99,6 +113,8 @@ function FormFields({
         formType="workExperience"
         activeTab={activeTab}
         onActiveTab={setActiveTab}
+        itemList={workList}
+        onItemList={onWorkList}
       />
     </div>
   );
