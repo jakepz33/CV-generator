@@ -27,6 +27,12 @@ function ListItem({ item }) {
       </p>
       <p>{item.Location}</p>
       <p>{item.Degree || item["Position Title"]}</p>
+      {item.Description && (
+        <>
+          <span></span>
+          <p className="job-description">{item.Description}</p>
+        </>
+      )}
     </div>
   );
 }

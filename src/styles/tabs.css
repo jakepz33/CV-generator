@@ -46,16 +46,32 @@
   outline: none;
 }
 
-/* ADD ITEM TO TAB */
+/* ADD ITEM TO TAB AND VIEW DELETE DESIGN */
 .list-item {
   height: 70px;
   display: flex;
   align-items: center;
   padding-left: 30px;
+  padding-right: 30px;
   background-color: #fff;
   border-top: 3px solid var(--backgroundColor);
   /* border-bottom: 1px solid var(--backgroundColor); */
 }
+.view-delete-btn {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.view-delete-btn button {
+  background-color: transparent;
+  border: none;
+  color: lightgray;
+}
+.view-delete-btn button:hover {
+  color: lightslategray;
+}
+/*  */
 .add-button-container {
   display: flex;
   justify-content: center;
@@ -75,4 +91,9 @@
 }
 .add-button:hover {
   border-color: lightgray;
+}
+/* Description Box */
+.form-description {
+  background-color: var(--backgroundColor);
+  min-height: 75px;
 }

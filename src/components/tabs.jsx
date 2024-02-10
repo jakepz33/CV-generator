@@ -83,16 +83,15 @@ function Tab({
   );
 }
 
-function AddItem({ description, handleAdd, itemList }) {
-  // function handleAdd() {
-  //   console.log("Add Button + description", description);
-  // }
+function AddItem({ description, handleAdd, itemList, onItemList }) {
   return (
     <div className="add-item">
-      {itemList.map((item) => (
+      {itemList.map((item, index) => (
         <ListItem
           title={item.name || item.School || item.Company}
           key={item.name || item.School || item.Company}
+          index={index}
+          onItemList={onItemList}
         />
       ))}
       {/* <ListItem />
@@ -105,10 +104,31 @@ function AddItem({ description, handleAdd, itemList }) {
     </div>
   );
 }
-function ListItem({ title }) {
+function ListItem({ title, index, onItemList }) {
+  function handleDelete() {
+    onItemList((prevList) => {
+      return [...prevList.slice(0, index), ...prevList.slice(index + 1)];
+    });
+    console.log("deleting item");
+  }
+  function handleHide() {
+    console.log("Hiding the item");
+  }
   return (
     <div className="list-item">
       <p>{title}</p>
+      <div className="view-delete-btn">
+        <button>
+          <span className="material-symbols-outlined" onClick={handleHide}>
+            visibility
+          </span>
+        </button>
+        <button>
+          <span className="material-symbols-outlined" onClick={handleDelete}>
+            remove
+          </span>
+        </button>
+      </div>
     </div>
   );
 }
@@ -306,16 +326,27 @@ function FormItem({
   return (
     <div className={`form-item ${startEnd ? "start-date" : ""}`}>
       <label>{label}</label>
-      <input
-        type="text"
-        className="form-input"
-        placeholder={placeHolder}
-        // value={curItem}
-        onChange={(e) => {
-          onChange(label, e.target.value);
-          onCurItem(e.target.value);
-        }}
-      ></input>
+      {label === "Description" ? (
+        <textarea
+          className="form-input form-description"
+          placeholder={placeHolder}
+          onChange={(e) => {
+            onChange(label, e.target.value);
+            onCurItem(e.target.value);
+          }}
+        ></textarea>
+      ) : (
+        <input
+          type="text"
+          className="form-input"
+          placeholder={placeHolder}
+          // value={curItem}
+          onChange={(e) => {
+            onChange(label, e.target.value);
+            onCurItem(e.target.value);
+          }}
+        ></input>
+      )}
     </div>
   );
 }

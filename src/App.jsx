@@ -37,7 +37,8 @@ export const workExperienceList = [
     "Start date": "05/21/2023",
     "End date": "08/30/2024",
     Location: "San Diego",
-    Description: "",
+    Description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida tortor ac magna feugiat, sed dapibus ipsum ultricies. Proin nec massa ut magna luctus fermentum.",
   },
 ];
 
