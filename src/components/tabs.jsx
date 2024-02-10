@@ -75,6 +75,8 @@ function Tab({
           formType={formType}
           itemList={itemList}
           onItemList={onItemList}
+          setShowForm={setShowForm}
+          setShowAdd={setShowAdd}
         />
       )}
     </div>
@@ -89,8 +91,8 @@ function AddItem({ description, handleAdd, itemList }) {
     <div className="add-item">
       {itemList.map((item) => (
         <ListItem
-          title={item.name || item.School}
-          key={item.name || item.School}
+          title={item.name || item.School || item.Company}
+          key={item.name || item.School || item.Company}
         />
       ))}
       {/* <ListItem />
@@ -125,15 +127,25 @@ function Forms({
   // for schoolForm
   itemList,
   onItemList,
+  setShowForm,
+  setShowAdd,
 }) {
   const [formData, setFormData] = useState({});
 
   //testing education state
-  const [curSchool, setCurSchool] = useState("Stanislaus State");
-  const [curDegree, setCurDegree] = useState("Computer Science");
-  const [curStartDate, setCurStartDate] = useState("8/22/2017");
-  const [curEndDate, setCurEndDate] = useState("5/23/2021");
-  const [curSchoolLocation, setCurSchoolLocation] = useState("Turlock, CA");
+  const [curSchool, setCurSchool] = useState("");
+  const [curDegree, setCurDegree] = useState("");
+  const [curStartDate, setCurStartDate] = useState("");
+  const [curEndDate, setCurEndDate] = useState("");
+  const [curSchoolLocation, setCurSchoolLocation] = useState("");
+
+  // experience state
+  const [curCompany, setCurCompany] = useState("");
+  const [curPosition, setCurPosition] = useState("");
+  const [jobStartDate, setJobStartDate] = useState("");
+  const [jobEndDate, setJobEndDate] = useState("");
+  const [curJobLocation, setCurJobLocation] = useState("");
+  const [curDescription, setCurDescription] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -141,6 +153,8 @@ function Forms({
     const newItem = { ...formData };
     onItemList((prevList) => [...prevList, newItem]);
     console.log(formData);
+    setShowForm(false);
+    setShowAdd(true);
   }
 
   function handleInputChange(name, value) {
@@ -159,12 +173,14 @@ function Forms({
         <>
           <FormItem
             label="School"
+            placeHolder="enter school / university"
             curItem={curSchool}
             onCurItem={setCurSchool}
             onChange={handleInputChange}
           />
           <FormItem
             label="Degree"
+            placeHolder="enter degree / field of study"
             curItem={curDegree}
             onCurItem={setCurDegree}
             onChange={handleInputChange}
@@ -172,6 +188,7 @@ function Forms({
           <div className="startEnd">
             <FormItem
               label="Start date"
+              placeHolder="enter start date"
               startEnd={true}
               curItem={curStartDate}
               onCurItem={setCurStartDate}
@@ -179,6 +196,7 @@ function Forms({
             />
             <FormItem
               label="End date"
+              placeHolder="enter end date"
               startEnd={true}
               curItem={curEndDate}
               onCurItem={setCurEndDate}
@@ -187,6 +205,7 @@ function Forms({
           </div>
           <FormItem
             label="Location"
+            placeHolder="enter location"
             curItem={curSchoolLocation}
             onCurItem={setCurSchoolLocation}
             onChange={handleInputChange}
@@ -195,27 +214,78 @@ function Forms({
         </>
       ) : formType === "workExperience" ? (
         <>
-          <FormItem label="Company name" />
-          <FormItem label="Position Title" />
+          <FormItem
+            label="Company"
+            placeHolder="enter company name"
+            curItem={curCompany}
+            onCurItem={setCurCompany}
+            onChange={handleInputChange}
+          />
+          <FormItem
+            label="Position Title"
+            placeHolder="enter position title"
+            curItem={curPosition}
+            onCurItem={setCurPosition}
+            onChange={handleInputChange}
+          />
           <div className="startEnd">
-            <FormItem label="Start date" startEnd={true} />
-            <FormItem label="End date" startEnd={true} />
+            <FormItem
+              label="Start date"
+              startEnd={true}
+              placeHolder="enter start date"
+              curItem={jobStartDate}
+              onCurItem={setJobStartDate}
+              onChange={handleInputChange}
+            />
+            <FormItem
+              label="End date"
+              startEnd={true}
+              placeHolder="enter end date"
+              curItem={jobEndDate}
+              onCurItem={setJobEndDate}
+              onChange={handleInputChange}
+            />
           </div>
-          <FormItem label="Location" />
-          <FormItem label="Description" />
+          <FormItem
+            label="Location"
+            placeHolder="enter location"
+            curItem={curJobLocation}
+            onCurItem={setCurJobLocation}
+            onChange={handleInputChange}
+          />
+          <FormItem
+            label="Description"
+            placeHolder="enter description"
+            curItem={curDescription}
+            onCurItem={setCurDescription}
+            onChange={handleInputChange}
+          />
+          <Button className="save-cancel" />
         </>
       ) : (
         <>
           <h2>Personal Information</h2>
-          <FormItem label="Full Name" curItem={curName} onCurItem={onCurName} />
-          <FormItem label="Email" curItem={curEmail} onCurItem={onSetEmail} />
+          <FormItem
+            label="Full Name"
+            placeHolder="first and last name"
+            curItem={curName}
+            onCurItem={onCurName}
+          />
+          <FormItem
+            label="Email"
+            placeHolder="enter email address"
+            curItem={curEmail}
+            onCurItem={onSetEmail}
+          />
           <FormItem
             label="Phone Number"
+            placeHolder="enter phone number"
             curItem={curPhone}
             onCurItem={onSetPhone}
           />
           <FormItem
             label="Address"
+            placeHolder="City, Country"
             curItem={curAddress}
             onCurItem={onSetAddress}
           />
@@ -239,7 +309,8 @@ function FormItem({
       <input
         type="text"
         className="form-input"
-        value={curItem}
+        placeholder={placeHolder}
+        // value={curItem}
         onChange={(e) => {
           onChange(label, e.target.value);
           onCurItem(e.target.value);

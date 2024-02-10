@@ -10,6 +10,8 @@ export default function CVside({
   onSetPhone,
   curAddress,
   onSetAddress,
+  schoolList,
+  workList,
 }) {
   return (
     <div className="appChild">
@@ -19,8 +21,8 @@ export default function CVside({
         curPhone={curPhone}
         curAddress={curAddress}
       />
-      <ListInfo />
-      <ListInfo />
+      <ListInfo itemList={schoolList} heading="Education" />
+      <ListInfo itemList={workList} heading="Experience" />
     </div>
   );
 }

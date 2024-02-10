@@ -15,29 +15,29 @@ function newSchool(school, degree, startDate, endDate, location = null) {
 
 export const schools = [
   {
-    name: "San Diego State",
-    degree: "BS Information Systems",
-    startDate: "08/22/2021",
-    endDate: "05/13/2023",
-    location: "San Diego, CA",
+    School: "San Diego State",
+    Degree: "BS Information Systems",
+    "Start date": "08/22/2021",
+    "End date": "05/13/2023",
+    Location: "San Diego, CA",
   },
   {
-    name: "UCLA",
-    degree: "BS Statistics",
-    startDate: "08/22/2021",
-    endDate: "05/13/2023",
-    location: "Los Angeles, CA",
+    School: "UCLA",
+    Degree: "BS Statistics",
+    "Start date": "08/22/2021",
+    "End date": "05/13/2023",
+    Location: "Los Angeles, CA",
   },
 ];
 
 export const workExperienceList = [
   {
-    name: "Qualcomm",
-    position: "Project Manager",
-    startDate: "05/21/2023",
-    endDate: "08/30/2024",
-    location: "San Diego",
-    description: "",
+    Company: "Qualcomm",
+    "Position Title": "Project Manager",
+    "Start date": "05/21/2023",
+    "End date": "08/30/2024",
+    Location: "San Diego",
+    Description: "",
   },
 ];
 
@@ -83,6 +83,10 @@ export default function App() {
         onSetPhone={setPhone}
         curAddress={curAddress}
         onSetAddress={setAddress}
+        schoolList={schoolList}
+        setSchoolList={setSchoolList}
+        workList={workList}
+        setWorkList={setWorkList}
       />
     </div>
   );
