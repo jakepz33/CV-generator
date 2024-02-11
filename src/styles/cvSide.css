@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightpink;
+  background-color: rgb(225, 232, 255);
   gap: 10px;
   height: fit-content;
   padding: 2rem 0 2rem 0;
@@ -31,7 +31,7 @@
 }
 .header-container {
   width: 100%;
-  background-color: aquamarine;
+  background-color: rgb(237, 243, 241);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,4 +43,13 @@
 }
 .job-description {
   margin-top: 2.5px;
+}
+.personal-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+.detail-icon {
+  font-size: 20px;
 }

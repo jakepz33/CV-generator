@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Tab, Forms } from "./tabs";
 import Button from "./button";
+import { schools } from "../App";
+import { workExperienceList } from "../App";
 
 export default function EditSide({
   curName,
@@ -76,13 +78,38 @@ function FormFields({
 }) {
   const [activeTab, setActiveTab] = useState("");
 
+  function handleClearResume() {
+    console.log("Clear Resume");
+    onCurName("");
+    onSetEmail("");
+    onSetPhone("");
+    onSetAddress("");
+    onSchoolList([]);
+    onWorkList([]);
+  }
+
+  function handleLoadExample() {
+    console.log("Load Example");
+    onCurName("Bruce Wayne");
+    onSetEmail("jumbotron@cave.io");
+    onSetPhone("123-445-2022");
+    onSetAddress("Gotham, MA");
+    onSchoolList(schools);
+    onWorkList(workExperienceList);
+  }
   return (
     <div className="form-fields">
       <div className="form-edits">
-        <Button className="form-edits-btn">
+        <Button
+          className="form-edits-btn clear-resume"
+          buttonFunction={handleClearResume}
+        >
           <p>Clear Resume</p>
         </Button>
-        <Button className="form-edits-btn">
+        <Button
+          className="form-edits-btn load-example"
+          buttonFunction={handleLoadExample}
+        >
           <p>Load Example</p>
         </Button>
       </div>

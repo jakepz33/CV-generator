@@ -28,8 +28,8 @@ export default function Header({ curName, curEmail, curPhone, curAddress }) {
 
 function PersonalDetail({ detail, icon }) {
   return (
-    <div>
-      <span className="material-icons">{icon}</span> {detail}
+    <div className="personal-detail">
+      <span className="material-icons detail-icon">{icon}</span> {detail}
     </div>
   );
 }

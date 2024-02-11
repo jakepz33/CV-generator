@@ -362,8 +362,7 @@ function FormItem({
           type="text"
           className="form-input"
           placeholder={placeHolder}
-          // value={curItem}
-
+          value={curItem}
           onChange={(e) => {
             onCurItem(e.target.value);
             formType !== "personal" && onChange(label, e.target.value);

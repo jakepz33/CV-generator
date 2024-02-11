@@ -16,6 +16,10 @@
 .start-date {
   flex: 1;
 }
+.form-item label {
+  color: black;
+  font-weight: 500;
+}
 .form-item {
   display: flex;
   flex-direction: column;
