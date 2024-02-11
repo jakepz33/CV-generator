@@ -20,6 +20,7 @@ export const schools = [
     "Start date": "08/22/2021",
     "End date": "05/13/2023",
     Location: "San Diego, CA",
+    visible: true,
   },
   {
     School: "UCLA",
@@ -27,6 +28,7 @@ export const schools = [
     "Start date": "08/22/2021",
     "End date": "05/13/2023",
     Location: "Los Angeles, CA",
+    visible: true,
   },
 ];
 
@@ -39,6 +41,7 @@ export const workExperienceList = [
     Location: "San Diego",
     Description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida tortor ac magna feugiat, sed dapibus ipsum ultricies. Proin nec massa ut magna luctus fermentum.",
+    visible: true,
   },
 ];
 

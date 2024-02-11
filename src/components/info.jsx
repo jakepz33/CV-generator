@@ -12,9 +12,12 @@ export default function ListInfo({ itemList, heading }) {
 }
 
 function InfoDisplay({ itemList }) {
-  return itemList.map((item) => (
-    <ListItem item={item} key={item.name || item.School || item.Company} />
-  ));
+  return itemList.map(
+    (item) =>
+      item.visible && (
+        <ListItem item={item} key={item.name || item.School || item.Company} />
+      )
+  );
 }
 
 function ListItem({ item }) {

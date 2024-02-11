@@ -91,6 +91,7 @@ function AddItem({ description, handleAdd, itemList, onItemList }) {
           title={item.name || item.School || item.Company}
           key={item.name || item.School || item.Company}
           index={index}
+          itemList={itemList}
           onItemList={onItemList}
         />
       ))}
@@ -104,7 +105,7 @@ function AddItem({ description, handleAdd, itemList, onItemList }) {
     </div>
   );
 }
-function ListItem({ title, index, onItemList }) {
+function ListItem({ title, index, itemList, onItemList }) {
   function handleDelete() {
     onItemList((prevList) => {
       return [...prevList.slice(0, index), ...prevList.slice(index + 1)];
@@ -113,6 +114,10 @@ function ListItem({ title, index, onItemList }) {
   }
   function handleHide() {
     console.log("Hiding the item");
+    const updatedArray = [...itemList];
+    updatedArray[index].visible =
+      updatedArray[index].visible === false ? true : false;
+    onItemList(updatedArray);
   }
   return (
     <div className="list-item">
@@ -120,7 +125,7 @@ function ListItem({ title, index, onItemList }) {
       <div className="view-delete-btn">
         <button>
           <span className="material-symbols-outlined" onClick={handleHide}>
-            visibility
+            {itemList[index].visible ? "visibility" : "visibility_off"}
           </span>
         </button>
         <button>
@@ -170,7 +175,8 @@ function Forms({
   function handleSubmit(e) {
     e.preventDefault();
     console.log(itemList);
-    const newItem = { ...formData };
+    const newItem = { ...formData, visible: true };
+    console.log("newItem", newItem);
     onItemList((prevList) => [...prevList, newItem]);
     console.log(formData);
     setShowForm(false);
@@ -197,6 +203,7 @@ function Forms({
             curItem={curSchool}
             onCurItem={setCurSchool}
             onChange={handleInputChange}
+            formType={formType}
           />
           <FormItem
             label="Degree"
@@ -204,6 +211,7 @@ function Forms({
             curItem={curDegree}
             onCurItem={setCurDegree}
             onChange={handleInputChange}
+            formType={formType}
           />
           <div className="startEnd">
             <FormItem
@@ -213,6 +221,7 @@ function Forms({
               curItem={curStartDate}
               onCurItem={setCurStartDate}
               onChange={handleInputChange}
+              formType={formType}
             />
             <FormItem
               label="End date"
@@ -221,6 +230,7 @@ function Forms({
               curItem={curEndDate}
               onCurItem={setCurEndDate}
               onChange={handleInputChange}
+              formType={formType}
             />
           </div>
           <FormItem
@@ -229,6 +239,7 @@ function Forms({
             curItem={curSchoolLocation}
             onCurItem={setCurSchoolLocation}
             onChange={handleInputChange}
+            formType={formType}
           />
           <Button className="save-cancel" />
         </>
@@ -240,6 +251,7 @@ function Forms({
             curItem={curCompany}
             onCurItem={setCurCompany}
             onChange={handleInputChange}
+            formType={formType}
           />
           <FormItem
             label="Position Title"
@@ -247,6 +259,7 @@ function Forms({
             curItem={curPosition}
             onCurItem={setCurPosition}
             onChange={handleInputChange}
+            formType={formType}
           />
           <div className="startEnd">
             <FormItem
@@ -256,6 +269,7 @@ function Forms({
               curItem={jobStartDate}
               onCurItem={setJobStartDate}
               onChange={handleInputChange}
+              formType={formType}
             />
             <FormItem
               label="End date"
@@ -264,6 +278,7 @@ function Forms({
               curItem={jobEndDate}
               onCurItem={setJobEndDate}
               onChange={handleInputChange}
+              formType={formType}
             />
           </div>
           <FormItem
@@ -272,6 +287,7 @@ function Forms({
             curItem={curJobLocation}
             onCurItem={setCurJobLocation}
             onChange={handleInputChange}
+            formType={formType}
           />
           <FormItem
             label="Description"
@@ -279,6 +295,7 @@ function Forms({
             curItem={curDescription}
             onCurItem={setCurDescription}
             onChange={handleInputChange}
+            formType={formType}
           />
           <Button className="save-cancel" />
         </>
@@ -290,24 +307,28 @@ function Forms({
             placeHolder="first and last name"
             curItem={curName}
             onCurItem={onCurName}
+            formType={formType}
           />
           <FormItem
             label="Email"
             placeHolder="enter email address"
             curItem={curEmail}
             onCurItem={onSetEmail}
+            formType={formType}
           />
           <FormItem
             label="Phone Number"
             placeHolder="enter phone number"
             curItem={curPhone}
             onCurItem={onSetPhone}
+            formType={formType}
           />
           <FormItem
             label="Address"
             placeHolder="City, Country"
             curItem={curAddress}
             onCurItem={onSetAddress}
+            formType={formType}
           />
         </>
       )}
@@ -322,6 +343,7 @@ function FormItem({
   curItem,
   onCurItem,
   onChange,
+  formType,
 }) {
   return (
     <div className={`form-item ${startEnd ? "start-date" : ""}`}>
@@ -341,10 +363,12 @@ function FormItem({
           className="form-input"
           placeholder={placeHolder}
           // value={curItem}
+
           onChange={(e) => {
-            onChange(label, e.target.value);
             onCurItem(e.target.value);
+            formType !== "personal" && onChange(label, e.target.value);
           }}
+          required={label === "Start date" || label === "End date"}
         ></input>
       )}
     </div>
