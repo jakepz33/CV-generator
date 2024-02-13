@@ -197,7 +197,7 @@ function FormFields({
                 <span>Aa</span> Sans
               </button>
               <button
-                className={`font-btn sans-btn ${
+                className={`font-btn serif-btn ${
                   activeButton === "Serif" ? "active" : ""
                 }`}
                 onClick={handleSerifClick}
@@ -205,7 +205,7 @@ function FormFields({
                 <span>Aa</span> Serif
               </button>
               <button
-                className={`font-btn sans-btn ${
+                className={`font-btn inter-btn ${
                   activeButton === "Inter" ? "active" : ""
                 }`}
                 onClick={handleInterClick}

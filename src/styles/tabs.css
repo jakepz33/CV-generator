@@ -154,6 +154,9 @@ customize-tabs label {
 .serif-btn {
   font-family: serif !important;
 }
+.inter-btn {
+  font-family: "Inter";
+}
 
 .active {
   background-color: rgb(225, 232, 255);
