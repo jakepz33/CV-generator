@@ -77,7 +77,7 @@ function SideBar({
   return (
     <div className="sideBar">
       <Button
-        className="sideBar-btn"
+        className={`sideBar-btn ${contentActive ? "active-btn" : ""}`}
         icon="description"
         buttonFunction={handleContentShow}
       >
@@ -85,7 +85,7 @@ function SideBar({
       </Button>
 
       <Button
-        className="sideBar-btn"
+        className={`sideBar-btn ${customizeActive ? "active-btn" : ""}`}
         icon="design_services"
         buttonFunction={handleCustomize}
       >
@@ -125,13 +125,12 @@ function FormFields({
   const [activeTab, setActiveTab] = useState("");
   const [activeButton, setActiveButton] = useState("Sans");
   // state for color input
-  const [headerBgColor, setHeaderBgColor] = useState("rgb(255, 232, 255)");
+  const [headerBgColor, setHeaderBgColor] = useState("#e1e8ff");
   const [textColor, setTextColor] = useState("#000");
 
   function handleHeaderColorChange(event) {
     const headerContainer = document.querySelector(".personal-info-holder");
     const newHeaderColor = event.target.value;
-    console.log("Changing color", newHeaderColor);
     setHeaderBgColor(newHeaderColor);
     const luminance = calculateLuminance(newHeaderColor);
     setTextColor(luminance > 0.5 ? "#000" : "#fff");
@@ -161,11 +160,16 @@ function FormFields({
   function handleLoadExample() {
     console.log("Load Example");
     onCurName("Bruce Wayne");
-    onSetEmail("jumbotron@cave.io");
-    onSetPhone("123-445-2022");
-    onSetAddress("Gotham, MA");
+    onSetEmail("jumbotron@nextgen.io");
+    onSetPhone("298-536-0990");
+    onSetAddress("Queens, NY");
     onSchoolList(schools);
     onWorkList(workExperienceList);
+    setHeaderBgColor("#e1e8ff");
+    setTextColor("#000");
+    const headerContainer = document.querySelector(".personal-info-holder");
+    headerContainer.style.backgroundColor = headerBgColor;
+    headerContainer.style.color = textColor;
   }
   function handleSansClick() {
     const cvSide = document.querySelector(".cvSide");

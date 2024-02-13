@@ -50,6 +50,34 @@
   outline: none;
 }
 
+/* FOR <CLEAR RESUME AND LOAD_EXAMPLE> */
+.form-edits {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.form-edits-btn {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+}
+.clear-resume {
+  color: red;
+  font-weight: bold;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+.load-example {
+  background-color: var(--backgroundColor);
+  color: var(--otherColor);
+  font-weight: bold;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
 /* ADD ITEM TO TAB AND VIEW DELETE DESIGN */
 .list-item {
   height: 70px;
@@ -103,7 +131,23 @@
 }
 
 /* Customize tabs - Color, Font */
-
+.sideBar-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: background-color 0.2s ease-out;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.1);
+}
+.active-btn {
+  background-color: var(--backgroundColor);
+}
 .customize-tabs {
   height: fit-content;
   background-color: #fff;
@@ -125,9 +169,7 @@
   font-weight: 400;
   margin-right: 10px;
 }
-customize-tabs label {
-  border-radius: 20px;
-}
+
 .font-btn-container {
   display: flex;
   flex-direction: row;

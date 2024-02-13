@@ -50,20 +50,14 @@ export default function App() {
   const [curName, setCurName] = useState("Bruce Wayne");
   const [curEmail, setEmail] = useState("jumbotron@nextgen.io");
   const [curPhone, setPhone] = useState("298-536-0990");
-  const [curAddress, setAddress] = useState("San Diego, CA");
-  // State for Education
-  // const [curSchool, seCurSchool] = useState("");
-  // const [curDegree, setCurDegree] = useState("jumbotron@nextgen.io");
-  // const [curStartDate, setCurStartDate] = useState("298-536-0990");
-  // const [curEndDate, setCurEndDate] = useState("");
-  // const [curSchoolLocation, setCurSchoolLocation] = useState("");
+  const [curAddress, setAddress] = useState("Queens, NY");
 
   // State for the Array of Objects
   const [schoolList, setSchoolList] = useState(schools);
   const [workList, setWorkList] = useState(workExperienceList);
   // state for customize and content button
-  const [contentActive, setContentActive] = useState(false);
-  const [customizeActive, setCustomizeActive] = useState(true);
+  const [contentActive, setContentActive] = useState(true);
+  const [customizeActive, setCustomizeActive] = useState(false);
 
   return (
     <div className="app">
