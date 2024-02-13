@@ -124,6 +124,29 @@ function FormFields({
 }) {
   const [activeTab, setActiveTab] = useState("");
   const [activeButton, setActiveButton] = useState("Sans");
+  // state for color input
+  const [headerBgColor, setHeaderBgColor] = useState("rgb(255, 232, 255)");
+  const [textColor, setTextColor] = useState("#000");
+
+  function handleHeaderColorChange(event) {
+    const headerContainer = document.querySelector(".personal-info-holder");
+    const newHeaderColor = event.target.value;
+    console.log("Changing color", newHeaderColor);
+    setHeaderBgColor(newHeaderColor);
+    const luminance = calculateLuminance(newHeaderColor);
+    setTextColor(luminance > 0.5 ? "#000" : "#fff");
+    headerContainer.style.backgroundColor = headerBgColor;
+    headerContainer.style.color = textColor;
+  }
+
+  function calculateLuminance(color) {
+    const hex = color.slice(1);
+    const rgb = parseInt(hex, 16);
+    const r = (rgb >> 16) & 0xff;
+    const g = (rgb >> 8) & 0xff;
+    const b = (rgb >> 0) & 0xff;
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; // calculate luminance
+  }
 
   function handleClearResume() {
     console.log("Clear Resume");
@@ -182,7 +205,11 @@ function FormFields({
             <p>Color</p>
             <span>
               <label>Accent Color</label>
-              <input type="color"></input>
+              <input
+                type="color"
+                value={headerBgColor}
+                onChange={handleHeaderColorChange}
+              ></input>
             </span>
           </div>
           <div className="customize-tabs">
