@@ -14,7 +14,7 @@ export default function CVside({
   workList,
 }) {
   return (
-    <div className="appChild">
+    <div className="appChild cvSide">
       <Header
         curName={curName}
         curEmail={curEmail}

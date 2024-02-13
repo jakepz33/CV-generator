@@ -47,10 +47,10 @@ export const workExperienceList = [
 
 export default function App() {
   // State for Personal Form
-  const [curName, setCurName] = useState("Jacob Perez");
+  const [curName, setCurName] = useState("Bruce Wayne");
   const [curEmail, setEmail] = useState("jumbotron@nextgen.io");
   const [curPhone, setPhone] = useState("298-536-0990");
-  const [curAddress, setAddress] = useState("");
+  const [curAddress, setAddress] = useState("San Diego, CA");
   // State for Education
   // const [curSchool, seCurSchool] = useState("");
   // const [curDegree, setCurDegree] = useState("jumbotron@nextgen.io");
@@ -61,6 +61,9 @@ export default function App() {
   // State for the Array of Objects
   const [schoolList, setSchoolList] = useState(schools);
   const [workList, setWorkList] = useState(workExperienceList);
+  // state for customize and content button
+  const [contentActive, setContentActive] = useState(false);
+  const [customizeActive, setCustomizeActive] = useState(true);
 
   return (
     <div className="app">
@@ -77,6 +80,10 @@ export default function App() {
         onSchoolList={setSchoolList}
         workList={workList}
         onWorkList={setWorkList}
+        contentActive={contentActive}
+        setContentActive={setContentActive}
+        customizeActive={customizeActive}
+        setCustomizeActive={setCustomizeActive}
       />
       <CVside
         curName={curName}

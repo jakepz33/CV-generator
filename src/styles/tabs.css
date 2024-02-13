@@ -101,3 +101,60 @@
   background-color: var(--backgroundColor);
   min-height: 75px;
 }
+
+/* Customize tabs - Color, Font */
+
+.customize-tabs {
+  height: fit-content;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 20px 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 8px;
+  gap: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.customize-tabs p {
+  font-size: 25px;
+}
+.customize-tabs label {
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+customize-tabs label {
+  border-radius: 20px;
+}
+.font-btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.font-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 15px;
+  /* padding: 30px 20px; */
+  background-color: #fff;
+  height: 100px;
+  width: 70px;
+}
+.font-btn span {
+  font-size: 25px;
+}
+.sans-btn {
+  font-family: sans-serif;
+}
+.serif-btn {
+  font-family: serif !important;
+}
+
+.active {
+  background-color: rgb(225, 232, 255);
+}
