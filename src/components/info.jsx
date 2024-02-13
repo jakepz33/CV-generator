@@ -22,7 +22,6 @@ function InfoDisplay({ itemList }) {
 
 function ListItem({ item }) {
   return (
-    // <div>{`${item["Start date"]}`}</div>
     <div className="grid-info">
       <p>{`${item["Start date"]} - ${item["End date"]}`} </p>
       <p>

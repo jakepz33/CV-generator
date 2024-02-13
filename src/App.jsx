@@ -3,28 +3,18 @@ import "./styles/App.css";
 import EditSide from "./components/editSide";
 import CVside from "./components/CVside";
 
-function newSchool(school, degree, startDate, endDate, location = null) {
-  return {
-    name: school,
-    degree: degree,
-    startDate: startDate,
-    endDate: endDate,
-    location: location,
-  };
-}
-
 export const schools = [
   {
     School: "San Diego State",
     Degree: "BS Information Systems",
-    "Start date": "08/22/2021",
-    "End date": "05/13/2023",
+    "Start date": "08/22/2017",
+    "End date": "05/13/2021",
     Location: "San Diego, CA",
     visible: true,
   },
   {
     School: "UCLA",
-    Degree: "BS Statistics",
+    Degree: "MS Statistics",
     "Start date": "08/22/2021",
     "End date": "05/13/2023",
     Location: "Los Angeles, CA",
@@ -34,11 +24,11 @@ export const schools = [
 
 export const workExperienceList = [
   {
-    Company: "Qualcomm",
+    Company: "New York Post",
     "Position Title": "Project Manager",
     "Start date": "05/21/2023",
     "End date": "08/30/2024",
-    Location: "San Diego",
+    Location: "New York",
     Description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida tortor ac magna feugiat, sed dapibus ipsum ultricies. Proin nec massa ut magna luctus fermentum.",
     visible: true,
