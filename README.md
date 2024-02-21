@@ -17,4 +17,6 @@ The "Customize tab" - gives users the option to select their preferred main head
 ## Project ScreenShots
 ![image](https://github.com/jakepz33/CV-generator/assets/113931214/711e2f3f-497f-4868-ba97-543059e68acc)
 ![image](https://github.com/jakepz33/CV-generator/assets/113931214/1bb1ac1f-d94d-495e-ad14-6bd45d7a1f27)
+![image](https://github.com/jakepz33/CV-generator/assets/113931214/0fae1b19-d43a-4cb6-a05d-00dff3ba8c1f)
+
 
